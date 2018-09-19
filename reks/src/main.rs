@@ -1,10 +1,9 @@
+extern crate reks;
 extern crate cgmath;
 
 use cgmath::{Vector3, vec3};
 
-mod ecs;
-
-use ecs::World;
+use reks::World;
 
 #[derive(Debug)]
 struct Pos {
