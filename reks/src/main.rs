@@ -32,9 +32,11 @@ fn main() {
     world.omg_dont_call_this_print_components::<Vel>();
 
     let dt = 5.0;
-    world.execute(|(Pos { pos } , Vel { vel }): (&mut Pos, &Vel)| {
-        *pos += vel * dt;
-    });
+    unsafe {
+        world.execute(|(Pos { pos } , Vel { vel }): (&mut Pos, &Vel)| {
+            *pos += vel * dt;
+        });
+    }
 
     println!("After execution:");
     world.omg_dont_call_this_print_components::<Pos>();

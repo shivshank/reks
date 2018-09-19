@@ -62,7 +62,14 @@ impl World {
 		}
 	}
 
-    pub fn execute<'a, 'b: 'a, T: SystemReq<'a>, F: FnMut(T)>(&'b mut self, mut f: F) {
+    pub unsafe fn execute<'a, 'b, T, F>(
+        &'b mut self, 
+        mut f: F
+    )
+        where 'b: 'a,
+            T: SystemReq<'a>,
+            F: FnMut(T)
+    {
         let mut component_set = Vec::new();
         T::c_set(&mut component_set);
 
