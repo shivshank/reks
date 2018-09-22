@@ -1,4 +1,4 @@
-/reks/target
-/reks/Cargo.lock
+/target
+Cargo.lock
 
 **/*.rs.bk

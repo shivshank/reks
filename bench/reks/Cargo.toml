@@ -1,6 +1,7 @@
 [package]
-name = "reks"
+name = "reks-bench"
 version = "0.1.0"
 authors = ["shivshank"]
 
 [dependencies]
+common = { path = "../common" }
