@@ -1,0 +1,7 @@
+[package]
+name = "specs-bench"
+version = "0.1.0"
+authors = ["shivshank"]
+
+[dependencies]
+common = { path = "../common", features = ["specs_impls"] }

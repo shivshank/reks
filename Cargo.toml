@@ -3,4 +3,5 @@
 members = [
     "reks",
     "bench/reks",
+    "bench/specs",
 ]

@@ -1,24 +1,30 @@
 extern crate common;
+extern crate reks;
 
 use common::prelude::*;
 
-use common::create_world;
+use reks::World;
 
 fn main() {
     let mut world = create_world();
 
-    println!("Before execution:");
-    world.omg_dont_call_this_print_components::<Pos>();
-    world.omg_dont_call_this_print_components::<Vel>();
-
-    let dt = 5.0;
+    let dt = DeltaTime(5.0);
     unsafe {
         world.execute(|(Pos { pos } , Vel { vel }): (&mut Pos, &Vel)| {
-            *pos += vel * dt;
+            integrate_velocity(pos, vel, dt.0);
         });
     }
+}
 
-    println!("After execution:");
-    world.omg_dont_call_this_print_components::<Pos>();
-    world.omg_dont_call_this_print_components::<Vel>();
+pub fn create_world() -> World {
+    let mut world = World::new();
+    world.create_entity()
+        .with(Pos { pos: vec3(0.0, 0.0, 0.0) })
+        .with(Vel { vel: vec3(1.0, 0.0, 0.0) })
+        .build();
+    world.create_entity()
+        .with(Pos { pos: vec3(1.0, 0.0, 0.0) })
+        .with(Vel { vel: vec3(1.0, 0.0, 1.0) })
+        .build();
+    world
 }

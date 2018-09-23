@@ -3,6 +3,10 @@ name = "common"
 version = "0.1.0"
 authors = ["shivshank"]
 
+[features]
+specs_impls = ["specs"]
+
 [dependencies]
 cgmath = "0.16.1"
-reks = { path = "../../reks" }
+
+specs = { version = "0.12.3", optional = true }

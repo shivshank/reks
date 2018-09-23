@@ -5,3 +5,4 @@ authors = ["shivshank"]
 
 [dependencies]
 common = { path = "../common" }
+reks = { path = "../../reks" }
