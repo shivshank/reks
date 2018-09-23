@@ -9,11 +9,9 @@ fn main() {
     let mut world = create_world();
 
     let dt = DeltaTime(5.0);
-    unsafe {
-        world.execute(|(Pos { pos } , Vel { vel }): (&mut Pos, &Vel)| {
-            integrate_velocity(pos, vel, dt.0);
-        });
-    }
+    world.execute(|(Pos { pos }, Vel { vel }): (&mut Pos, &Vel)| {
+        integrate_velocity(pos, vel, dt.0);
+    });
 }
 
 pub fn create_world() -> World {
